@@ -11,6 +11,21 @@ class Player:
         self.score = sum(randint(1, 6) for _ in range(loop))
 
 
+class Game:
+    def __init__(self, names, loop):
+        if len(names) == 1:
+            names.append('Machine')
+        self.players = [Player(name, loop) for name in names]
+
+
+def count_scores(players):
+    win = max(i.score for i in players)
+    block = max(len(i.name) for i in players) + 2
+    for i in players:
+        print("{}:{:>{}}".format(i.name, i.score, block-len(i.name)))
+    return [i.name for i in players if i.score == win]
+
+
 def entry():
     parser = argparse.ArgumentParser()
     parser.add_argument(

@@ -43,10 +43,16 @@ def entry():
 
 def main():
     args = entry()
-    print('Количество бросков кубика: {}'.format(args.loop))
-    print('Игроки:')
-    for i in args.play:
-        print('\t', i)
+    game = Game(args.play, args.loop)
+    winners = count_scores(game.players)
+    while True:
+        if len(winners) == 1:
+            print('\nCongrats {}!'.format(winners[0]))
+            break
+        else:
+            print('\nNo winner, one more throw:')
+            game = Game(winners, args.loop)
+            winners = count_scores(game.players)
 
 
 if __name__ == '__main__':

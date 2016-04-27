@@ -1,0 +1,4 @@
+Usage:
+python3 dice.py -p Player1 Player2 Player3 ... PlayerN
+
+Try it, you'll know who is lucky.

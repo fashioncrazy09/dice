@@ -2,6 +2,14 @@
 
 import argparse
 
+from random import randint
+
+
+class Player:
+    def __init__(self, name, loop):
+        self.name = name
+        self.score = sum(randint(1, 6) for _ in range(loop))
+
 
 def entry():
     parser = argparse.ArgumentParser()
